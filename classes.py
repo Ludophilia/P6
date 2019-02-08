@@ -17,6 +17,7 @@ class Database:
     def create_database(self, sql_file, sep): 
         with open(sql_file) as f: 
             for statement in f.read().split(sep): 
+                print(statement)
                 self.cursor.execute(statement) 
 
     def add_to_table(self, table_name, values): 
