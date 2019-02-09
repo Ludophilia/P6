@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `6db`.`commande` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_pizzeria_id_commande`
     FOREIGN KEY (`id_pizzeria`)
-    REFERENCES `6db`.`Pizzeria` (`id_pizzeria`)
+    REFERENCES `6db`.`pizzeria` (`id_pizzeria`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `6db`.`employe` (
   `fonction` VARCHAR(100) NULL,
   `latitude` FLOAT NULL,
   `longitude` FLOAT NULL,
-  `commande_en_traitement` INT UNSIGNED NOT NULL,
+  `commande_en_traitement` INT UNSIGNED,
   PRIMARY KEY (`id_employe`),
   INDEX `fk_commande_traitement_idx` (`commande_en_traitement` ASC),
   CONSTRAINT `fk_commande_traitement_employe`
