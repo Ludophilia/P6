@@ -22,13 +22,12 @@ def main():
         db.csv_to_table("csv/employes.csv", "6db.employe")
         dg.generate_csv("csv/clients.csv")
         db.csv_to_table("csv/clients.csv", "6db.client")
+        dg.generate_csv("csv/adresses.csv")
+        db.csv_to_table("csv/adresses.csv", "6db.adresse")
         
-    #table suivante : La table adresse. Champs : id_client, civilite, nom, prenom, adresse_mail,numero_telephone, mot_de_passe
+    #table suivante : La table composition_produit. Champs : | On la fait à la main celle là.
 
-    #NEXT : Ajoutez à la table client !!
     
-    
-
 
     # print(mimesis.datetime.datetime(),
     # mimesis.datetime.formatted_datetime(start=2018, end=2019))

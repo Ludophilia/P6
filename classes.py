@@ -44,6 +44,15 @@ class DataGenerator:
                         self.facility.person.password(length=password_length, hashed=True)
                         ])
 
+            if csv_file == "csv/adresses.csv":
+
+                for _ in range(20) :
+                     csv_writer.writerow([
+                        self.facility.address.street_number(maximum=200),
+                        self.facility.address.street_name(),
+                        self.facility.address.postal_code()
+                        ])
+
 class Database: 
 
     def __init__(self, user, password, host, use_unicode, verbosity): 
@@ -84,7 +93,8 @@ class Database:
         "6db.stock": " (nom, categorie, quantite_restante) VALUES (%s, %s, %s)",
         "6db.produit" : " (nom, description, categorie, prix_ttc) VALUES (%s, %s, %s, %s)",
         "6db.employe" : " (civilite, nom, prenom, fonction, latitude, longitude) VALUES (%s, %s, %s, %s, %s, %s)",
-        "6db.client" : " (civilite, nom, prenom, adresse_mail, numero_telephone, mot_de_passe) VALUES (%s, %s, %s, %s, %s, %s)"}  
+        "6db.client" : " (civilite, nom, prenom, adresse_mail, numero_telephone, mot_de_passe) VALUES (%s, %s, %s, %s, %s, %s)",
+        "6db.adresse" : " (numero_voie, nom_voie, code_postal) VALUES (%s, %s, %s)"}  
         
         addtotable_statement = ("INSERT INTO " + table_name + tail_statement[table_name]) 
 
