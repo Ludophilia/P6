@@ -13,27 +13,36 @@ class DataGenerator:
         
         with open(csv_file,'w') as csvfile:
             csv_writer = csv.writer(csvfile)
+            gender = [['Madame',Gender.FEMALE], ['Monsieur',Gender.MALE]]
 
-            if csv_file == "employes.csv":
+            if csv_file == "csv/employes.csv":
                 
                 occupation = ["Livreur", "Preparateur de Commande"]
-
-                for _ in range(5) :
-                    csv_writer.writerow(['Madame',
+                
+                for _ in range(10) :
+                    lucky_number = random.randint(0,1)
+                    csv_writer.writerow([gender[lucky_number][0],
                         self.facility.person.last_name(),
-                        self.facility.person.name(gender=Gender.FEMALE),
+                        self.facility.person.name(gender=gender[lucky_number][1]),
                         occupation[random.randint(0,1)],
                         self.facility.address.latitude(),
-                        self.facility.address.longitude(),
+                        self.facility.address.longitude()
                         ])
-                    csv_writer.writerow(['Monsieur',
-                        self.facility.person.last_name(),
-                        self.facility.person.name(gender=Gender.MALE),
-                        occupation[random.randint(0,1)],
-                        self.facility.address.latitude(),
-                        self.facility.address.longitude(),
-                        ])          
 
+            if csv_file == "csv/clients.csv":
+                
+                password_length = random.randint(8, 48)
+                tel = ["06", "07"]
+                
+                for _ in range(10):
+                    lucky_number = random.randint(0,1)
+                    csv_writer.writerow([gender[lucky_number][0],
+                        self.facility.person.last_name(),
+                        self.facility.person.name(gender=gender[lucky_number][1]),
+                        self.facility.person.email(domains=["@outlook.fr", "@laposte.net", "@gmail.com", "@hotmail.fr", "@orange.fr", "@yahoo.fr", "@openclassrooms.com"]),
+                        self.facility.person.telephone(mask=tel[lucky_number]+'########', placeholder='#'),
+                        self.facility.person.password(length=password_length, hashed=True)
+                        ])
 
 class Database: 
 
@@ -74,7 +83,8 @@ class Database:
         tail_statement = {
         "6db.stock": " (nom, categorie, quantite_restante) VALUES (%s, %s, %s)",
         "6db.produit" : " (nom, description, categorie, prix_ttc) VALUES (%s, %s, %s, %s)",
-        "6db.employe" : " (civilite, nom, prenom, fonction, latitude, longitude) VALUES (%s, %s, %s, %s, %s, %s)"} 
+        "6db.employe" : " (civilite, nom, prenom, fonction, latitude, longitude) VALUES (%s, %s, %s, %s, %s, %s)",
+        "6db.client" : " (civilite, nom, prenom, adresse_mail, numero_telephone, mot_de_passe) VALUES (%s, %s, %s, %s, %s, %s)"}  
         
         addtotable_statement = ("INSERT INTO " + table_name + tail_statement[table_name]) 
 

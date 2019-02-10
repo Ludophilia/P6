@@ -15,18 +15,20 @@ def main():
     if db.does_6db_exist() is False :
         db.create_database("script.sql", ";")
 
-    if 0 == 1:
-        db.csv_to_table("stock.csv", "6db.stock")
-        db.csv_to_table("produits.csv", "6db.produit")
-        dg.generate_csv("employes.csv")
-        db.csv_to_table("employes.csv", "6db.employe")
+    if "p" == "np":
+        db.csv_to_table("csv/stock.csv", "6db.stock")
+        db.csv_to_table("csv/produits.csv", "6db.produit")
+        dg.generate_csv("csv/employes.csv")
+        db.csv_to_table("csv/employes.csv", "6db.employe")
+        dg.generate_csv("csv/clients.csv")
+        db.csv_to_table("csv/clients.csv", "6db.client")
         
-    #table suivante : La table employé. 5 éléments, champs : id_employe, civilite, nom, prenom, fonction, latitude, longitude, commande_en_traitement (laisser null)
+    #table suivante : La table adresse. Champs : id_client, civilite, nom, prenom, adresse_mail,numero_telephone, mot_de_passe
 
-    #Cette fois-ci, il va falloir créer le csv avec des données aléatoirement générées
-
+    #NEXT : Ajoutez à la table client !!
     
     
+
 
     # print(mimesis.datetime.datetime(),
     # mimesis.datetime.formatted_datetime(start=2018, end=2019))
