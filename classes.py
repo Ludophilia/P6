@@ -1,5 +1,39 @@
 import mysql.connector
+from mimesis import Generic
+from mimesis.enums import *
 import csv
+import random
+
+class DataGenerator:
+
+    def __init__(self, language):
+        self.facility = Generic(language)
+
+    def generate_csv(self, csv_file):
+        
+        with open(csv_file,'w') as csvfile:
+            csv_writer = csv.writer(csvfile)
+
+            if csv_file == "employes.csv":
+                
+                occupation = ["Livreur", "Preparateur de Commande"]
+
+                for _ in range(5) :
+                    csv_writer.writerow(['Madame',
+                        self.facility.person.last_name(),
+                        self.facility.person.name(gender=Gender.FEMALE),
+                        occupation[random.randint(0,1)],
+                        self.facility.address.latitude(),
+                        self.facility.address.longitude(),
+                        ])
+                    csv_writer.writerow(['Monsieur',
+                        self.facility.person.last_name(),
+                        self.facility.person.name(gender=Gender.MALE),
+                        occupation[random.randint(0,1)],
+                        self.facility.address.latitude(),
+                        self.facility.address.longitude(),
+                        ])          
+
 
 class Database: 
 
@@ -39,10 +73,8 @@ class Database:
         
         tail_statement = {
         "6db.stock": " (nom, categorie, quantite_restante) VALUES (%s, %s, %s)",
-        "6db.produit" : " (nom, description, categorie, prix_ttc) VALUES (%s, %s, %s, %s)", 
-    
-        "5db.Product": " (name, description, quantity, url, category, retailer, nutriscore) VALUES (%(product_name)s, %(ingredients_text)s, %(quantity)s, %(url)s, %(categories)s, %(stores)s, %(nutrition_grade_fr)s)",
-        "5db.Research": " (product_id, substitute_id) VALUES (%s, %s)"} 
+        "6db.produit" : " (nom, description, categorie, prix_ttc) VALUES (%s, %s, %s, %s)",
+        "6db.employe" : " (civilite, nom, prenom, fonction, latitude, longitude) VALUES (%s, %s, %s, %s, %s, %s)"} 
         
         addtotable_statement = ("INSERT INTO " + table_name + tail_statement[table_name]) 
 

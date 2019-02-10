@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `6db`.`employe` (
   `fonction` VARCHAR(100) NULL,
   `latitude` FLOAT NULL,
   `longitude` FLOAT NULL,
-  `commande_en_traitement` INT UNSIGNED,
+  `commande_en_traitement` INT UNSIGNED NULL,
   PRIMARY KEY (`id_employe`),
   INDEX `fk_commande_traitement_idx` (`commande_en_traitement` ASC),
   CONSTRAINT `fk_commande_traitement_employe`
