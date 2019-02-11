@@ -3,6 +3,7 @@ from classes import *
 
 
 def main():
+    
     db = Database(
         cfg.mysql['user'], 
         cfg.mysql['password'],

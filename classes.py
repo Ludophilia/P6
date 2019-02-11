@@ -4,6 +4,7 @@ from mimesis.enums import *
 import csv
 import random
 
+
 class DataGenerator:
 
     def __init__(self, language):
@@ -52,6 +53,7 @@ class DataGenerator:
                         self.facility.address.street_suffix()+" "+self.facility.address.street_name(),
                         self.facility.address.postal_code()
                         ])
+
 
 class Database: 
 
