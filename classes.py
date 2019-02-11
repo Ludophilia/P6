@@ -49,7 +49,7 @@ class DataGenerator:
                 for _ in range(20) :
                      csv_writer.writerow([
                         self.facility.address.street_number(maximum=200),
-                        self.facility.address.street_name(),
+                        self.facility.address.street_suffix()+" "+self.facility.address.street_name(),
                         self.facility.address.postal_code()
                         ])
 
@@ -94,7 +94,10 @@ class Database:
         "6db.produit" : " (nom, description, categorie, prix_ttc) VALUES (%s, %s, %s, %s)",
         "6db.employe" : " (civilite, nom, prenom, fonction, latitude, longitude) VALUES (%s, %s, %s, %s, %s, %s)",
         "6db.client" : " (civilite, nom, prenom, adresse_mail, numero_telephone, mot_de_passe) VALUES (%s, %s, %s, %s, %s, %s)",
-        "6db.adresse" : " (numero_voie, nom_voie, code_postal) VALUES (%s, %s, %s)"}  
+        "6db.adresse" : " (numero_voie, nom_voie, code_postal) VALUES (%s, %s, %s)",
+        "6db.composition_produit" : " (id_produit, id_ingredient) VALUES (%s, %s)",
+        "6db.recette" : " (reference_produit, recette) VALUES (%s, %s)",
+        "6db.choix_client_livraison" : " (id_client, id_adresse, option_livraison, paiement_livraison) VALUES (%s, %s, %s, %s)"}  
         
         addtotable_statement = ("INSERT INTO " + table_name + tail_statement[table_name]) 
 
