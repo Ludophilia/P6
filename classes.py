@@ -97,7 +97,16 @@ class Database:
         "6db.adresse" : " (numero_voie, nom_voie, code_postal) VALUES (%s, %s, %s)",
         "6db.composition_produit" : " (id_produit, id_ingredient) VALUES (%s, %s)",
         "6db.recette" : " (reference_produit, recette) VALUES (%s, %s)",
-        "6db.choix_client_livraison" : " (id_client, id_adresse, option_livraison, paiement_livraison) VALUES (%s, %s, %s, %s)"}  
+        "6db.choix_client_livraison" : " (id_client, id_adresse, option_livraison, paiement_livraison) VALUES (%s, %s, %s, %s)",
+        "6db.pizzeria" : " (nom_pizzeria, id_adresse) VALUES (%s, %s)",
+        "6db.facture" : " (chemin_facture) VALUES (%s)",
+        "6db.commande" : " (ref_client, montant, date_creation, choix_livraison, id_facture, id_pizzeria) VALUES (%s, %s, %s, %s, %s, %s)",
+        "6db.contenu_commande" : " (id_commande, id_produit, quantite_produit) VALUES (%s, %s, %s)",
+        "6db.etat_preparation" : " (ref_commande,etat_preparation, date) VALUES (%s, %s, %s)",
+        "6db.etat_paiement" : " (ref_commande,etat_paiement, date) VALUES (%s, %s, %s)",
+        "6db.media" : " (nom, type_media, chemin_media) VALUES (%s, %s, %s)",
+        "6db.illustration_produit" : " (ref_produit, ref_media) VALUES (%s, %s)",
+        "6db.illustration_recette" : " (ref_recette, ref_media) VALUES (%s, %s)"}  
         
         addtotable_statement = ("INSERT INTO " + table_name + tail_statement[table_name]) 
 
