@@ -37,5 +37,8 @@ def main():
         db.csv_to_table("csv/illustrations_produit.csv", "6db.illustration_produit")
         db.csv_to_table("csv/illustrations_recette.csv", "6db.illustration_recette")
 
+    else: 
+        print("Considérant que les tables ont déjà été remplies, fermeture du programme. A bientôt peut-être !")
+
 if __name__ == "__main__":
     main()
