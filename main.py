@@ -4,7 +4,7 @@ from classes import *
 
 def main():
     
-    db = Database(
+    db = DatabaseManager(
         cfg.mysql['user'], 
         cfg.mysql['password'],
         cfg.mysql['host'],
@@ -13,7 +13,7 @@ def main():
 
     dg = DataGenerator('fr')
 
-    if db.does_6db_exist() is False : #Iterer sur la liste des csv et des tables en faisant un appel à ces méthodes
+    if db.does_6db_exist() is False : 
         db.create_database("script.sql", ";")
 
         dg.generate_csv("csv/employes.csv")

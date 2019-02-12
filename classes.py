@@ -1,8 +1,8 @@
+import csv
+import random
 import mysql.connector
 from mimesis import Generic
 from mimesis.enums import *
-import csv
-import random
 
 
 class DataGenerator:
@@ -55,7 +55,7 @@ class DataGenerator:
                         ])
 
 
-class Database: 
+class DatabaseManager: 
 
     def __init__(self, user, password, host, use_unicode, verbosity): 
 
